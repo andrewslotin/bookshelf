@@ -36,6 +36,18 @@ class ReviewsController < ApplicationController
     review.destroy
   end
 
+  def feed
+    @reviews = reviews.comments.order("created_at DESC")
+
+    # this will be our Feed's update timestamp
+    @updated = reviews.first.updated_at unless reviews.empty?
+
+    respond_to do |format|
+      format.atom { render layout: false }
+      format.rss { redirect_to feed_path(format: :atom), status: :moved_permanently }
+    end
+  end
+
   private
 
   def review_params
@@ -47,6 +59,6 @@ class ReviewsController < ApplicationController
   end
 
   def reviews
-    @reviews = Review.all
+    @reviews ||= Review.all
   end
 end
