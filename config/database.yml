@@ -1,0 +1,17 @@
+common: &common
+  adapter: postgresql
+  host: localhost
+  username: postgres
+  password: postgres
+
+development:
+  <<: *common
+  database: bookshelf_development
+
+test:
+  <<: *common
+  database: bookshelf_test
+
+production:
+  <<: *common
+  database: bookshelf_production
