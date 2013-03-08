@@ -1,0 +1,14 @@
+.row
+  = simple_form_for review do |f|
+    = f.error_notification
+
+    = f.input :author_name, placeholder: "Автор"
+    = f.input :book_title, placeholder: "Название книги"
+
+    .inputs
+      = f.input :rating, collection: 1..5
+      = f.input :body
+
+    .actions
+      = f.button :submit, "Сохранить", class: "btn btn-primary"
+      = link_to "Назад", :back, class: "btn btn-link"

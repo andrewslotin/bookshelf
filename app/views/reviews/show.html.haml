@@ -1,0 +1,30 @@
+.page-header
+  %h1
+    = review.book.author
+    &laquo;#{ review.book }&raquo;
+
+.row
+  = link_to "Назад", root_path
+
+.row
+  %p
+    %strong Оценка:
+    = review.rating
+
+- if review.body.present?
+  .row
+    = review.body
+
+.row
+  %em
+    %p
+      Опубликовано
+      = l review.created_at, format: :short
+
+.row
+  %p
+    %small
+      = link_to "Редактировать", edit_review_path(review)
+      или
+      = link_to "Удалить", reviews_path(review), method: :delete, confirm: "Точно?"
+      ?

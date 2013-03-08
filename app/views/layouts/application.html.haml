@@ -7,4 +7,13 @@
     = csrf_meta_tags
 
   %body
-    = yield
+    #content.container
+      = yield
+    .push
+
+  %footer
+    #footer
+      .container
+        .muted.credit
+          2013. Powered by Guinness
+          %sup> ®

@@ -1,0 +1,13 @@
+.page-header
+  %h1 Рецензии
+
+.row
+  %ul
+    - reviews.comments.each do |review|
+      %li
+        = review.book.author
+        &laquo;#{ link_to review.book, review_path(review) }&raquo;
+.row
+  %p
+    %small
+      = link_to "Добавить рецензию", new_review_path
