@@ -1,7 +1,8 @@
 !!! 5
 %html
   %head
-    %title Книжная полка
+    %title
+      = content_for?(:title) ? yield(:title) : "Книжная полка"
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = auto_discovery_link_tag :atom, feed_path
