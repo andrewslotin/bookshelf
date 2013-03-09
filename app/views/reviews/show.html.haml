@@ -2,7 +2,7 @@
   %h1
     = book_title_with_author(review.book)
 
-.row
+.row-fluid
   .span3
     %p
       = image_tag "http://placehold.it/210x297", alt: book_title_with_author(review.book)
@@ -13,16 +13,16 @@
       %small= link_to "Назад к списку рецензий", root_path
   .span9
     = simple_format review.body
-    .row
-      .span6
-        %p.muted
-          %em
-            Опубликовано
-            = l review.created_at, format: :short
-      .span3
-        %p.text-right.muted
-          %small
-            = link_to "Редактировать", edit_review_path(review)
-            или
-            = link_to "удалить", reviews_path(review), method: :delete, confirm: "Точно?"
-            ?
+.row-fluid
+  .span6.offset3
+    %p.muted
+      %em
+        Опубликовано
+        = l review.created_at, format: :short
+  .span3
+    %p.text-right.muted
+      %small
+        = link_to "Редактировать", edit_review_path(review)
+        или
+        = link_to "удалить", reviews_path(review), method: :delete, confirm: "Точно?"
+        ?

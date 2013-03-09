@@ -1,18 +1,18 @@
 = simple_form_for review do |f|
-  .row
+  .row-fluid
     .span12
-    = f.error_notification
+      = f.error_notification
 
-  .row
+  .row-fluid
     .span3
       = f.input :author_name, label: false, placeholder: "Автор", input_html: { style: "width: 100%" }
       = f.input :book_title, label: false, placeholder: "Название", input_html: { style: "width: 100%" }
-      = f.input :rating, collection: 1..5
+      = f.input :rating, collection: ['Отвратительно', 'Плохо', 'Можно не читать', 'Стоит прочесть', 'Отлично'].map.with_index(1).to_a.reverse
 
-    .span8.offset1
+    .span7.offset1
       = f.input :body, label: false, placeholder: "Тут можно написать свое мнение о книге", input_html: { style: "width: 100%; height: 300px" }
 
-  .row
-    .span12.actions.text-right
+  .row-fluid
+    .span11.actions.text-right
       = f.button :submit, "Сохранить", class: "btn btn-primary"
-      = link_to "Назад", :back, class: "btn btn-link"
+      = link_to "Назад", root_path, class: "btn btn-link"

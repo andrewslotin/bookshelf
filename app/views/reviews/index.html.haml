@@ -1,12 +1,12 @@
 .page-header
   %h1 Рецензии
 
-.row
+.row-fluid
   %ul
     - reviews.comments.each do |review|
       %li
         = link_to book_title_with_author(review.book), review_path(review)
-.row
+.row-fluid
   %p
     %small
       = link_to "Добавить рецензию", new_review_path
