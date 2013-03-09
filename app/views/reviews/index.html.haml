@@ -2,10 +2,16 @@
   %h1 Рецензии
 
 .row-fluid
-  %ul
+  %ul#reviews.thumbnails
     - reviews.comments.each do |review|
-      %li
-        = link_to book_title_with_author(review.book), review_path(review)
+      %li.span4
+        .thumbnail
+          %h3= book_title_with_author(review.book)
+          %p.text-justify
+            = image_tag review.book.cover.thumb.url, class: "img-polaroid"
+            = snippet(review)
+          %p.text-right
+            %small= link_to "Читать дальше", review_path(review)
 .row-fluid
   %p
     %small

@@ -1,3 +1,13 @@
 // Place all the styles related to the reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#reviews .thumbnail {
+  padding: 0 1em;
+
+  p {
+    img {
+      float: left;
+      margin-right: 10px;
+    }
+  }
+}

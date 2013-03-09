@@ -9,6 +9,8 @@ class Book < ActiveRecord::Base
 
   before_validation :assign_author
 
+  mount_uploader :cover, CoverUploader
+
   def to_s
     title
   end

@@ -5,7 +5,7 @@
 .row-fluid
   .span3
     %p
-      = image_tag "http://placehold.it/210x297", alt: book_title_with_author(review.book)
+      = image_tag review.book.cover.url, alt: book_title_with_author(review.book)
     %p
       %strong Оценка:
       = review.rating
