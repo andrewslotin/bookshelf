@@ -5,7 +5,13 @@
 .row-fluid
   .span3
     %p
-      = image_tag review.book.cover.url, alt: book_title_with_author(review.book)
+      = simple_form_for review.book, html: { multipart: true } do |f|
+        = image_tag review.book.cover.url, alt: book_title_with_author(review.book)
+        = f.input :cover, label: false
+        - if review.book.cover.present?
+          %label.checkbox
+            = f.input :remove_cover, as: :boolean, label: false
+            Удалить обложку
     %p
       %strong Оценка:
       = review.rating

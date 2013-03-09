@@ -21,8 +21,10 @@ class Review < ActiveRecord::Base
   private
 
   def assign_book
-    self.book = Book.find_or_create_by_title(book_title) do |book|
-      book.author_name = self.author_name
+    self.book = if @book_title.present?
+      Book.find_or_create_by_title(book_title) do |book|
+        book.author_name = self.author_name
+      end
     end
   end
 end

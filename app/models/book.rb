@@ -22,6 +22,6 @@ class Book < ActiveRecord::Base
   private
 
   def assign_author
-    self.author = Author.find_or_create_by_name(author_name)
+    self.author = Author.find_or_create_by_name(author_name) if @author_name.present?
   end
 end
