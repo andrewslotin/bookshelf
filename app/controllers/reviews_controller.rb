@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @review = Review.new
+    @review = Review.new(author_name: "", book_title: "")
   end
 
   def create
@@ -30,6 +30,15 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    review.update_attributes(review_params)
+
+    respond_to do |format|
+      if @review.errors.any?
+        format.html { render :edit }
+      else
+        format.html { redirect_to action: :show }
+      end
+    end
   end
 
   def destroy
@@ -38,8 +47,6 @@ class ReviewsController < ApplicationController
 
   def feed
     @reviews = reviews.comments.order("created_at DESC")
-
-    # this will be our Feed's update timestamp
     @updated = reviews.first.updated_at unless reviews.empty?
 
     respond_to do |format|

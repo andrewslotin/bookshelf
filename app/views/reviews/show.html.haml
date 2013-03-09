@@ -1,30 +1,28 @@
 .page-header
   %h1
-    = review.book.author
-    &laquo;#{ review.book }&raquo;
+    = book_title_with_author(review.book)
 
 .row
-  = link_to "Назад", root_path
-
-.row
-  %p
-    %strong Оценка:
-    = review.rating
-
-- if review.body.present?
-  .row
-    = review.body
-
-.row
-  %em
+  .span3
     %p
-      Опубликовано
-      = l review.created_at, format: :short
-
-.row
-  %p
-    %small
-      = link_to "Редактировать", edit_review_path(review)
-      или
-      = link_to "Удалить", reviews_path(review), method: :delete, confirm: "Точно?"
-      ?
+      = image_tag "http://placehold.it/210x297", alt: book_title_with_author(review.book)
+    %p
+      %strong Оценка:
+      = review.rating
+    %p
+      %small= link_to "Назад к списку рецензий", root_path
+  .span9
+    = simple_format review.body
+    .row
+      .span6
+        %p.muted
+          %em
+            Опубликовано
+            = l review.created_at, format: :short
+      .span3
+        %p.text-right.muted
+          %small
+            = link_to "Редактировать", edit_review_path(review)
+            или
+            = link_to "удалить", reviews_path(review), method: :delete, confirm: "Точно?"
+            ?

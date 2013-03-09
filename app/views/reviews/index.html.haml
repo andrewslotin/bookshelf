@@ -5,8 +5,7 @@
   %ul
     - reviews.comments.each do |review|
       %li
-        = review.book.author
-        &laquo;#{ link_to review.book, review_path(review) }&raquo;
+        = link_to book_title_with_author(review.book), review_path(review)
 .row
   %p
     %small

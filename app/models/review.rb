@@ -10,6 +10,14 @@ class Review < ActiveRecord::Base
 
   before_validation :assign_book
 
+  def author_name
+    @author_name || book.author.name
+  end
+
+  def book_title
+    @book_title || book.title
+  end
+
   private
 
   def assign_book

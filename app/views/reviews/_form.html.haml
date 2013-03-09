@@ -1,14 +1,18 @@
-.row
-  = simple_form_for review do |f|
+= simple_form_for review do |f|
+  .row
+    .span12
     = f.error_notification
 
-    = f.input :author_name, placeholder: "Автор"
-    = f.input :book_title, placeholder: "Название книги"
-
-    .inputs
+  .row
+    .span3
+      = f.input :author_name, label: false, placeholder: "Автор", input_html: { style: "width: 100%" }
+      = f.input :book_title, label: false, placeholder: "Название", input_html: { style: "width: 100%" }
       = f.input :rating, collection: 1..5
-      = f.input :body
 
-    .actions
+    .span8.offset1
+      = f.input :body, label: false, placeholder: "Тут можно написать свое мнение о книге", input_html: { style: "width: 100%; height: 300px" }
+
+  .row
+    .span12.actions.text-right
       = f.button :submit, "Сохранить", class: "btn btn-primary"
       = link_to "Назад", :back, class: "btn btn-link"
